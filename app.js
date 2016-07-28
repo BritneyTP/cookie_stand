@@ -142,17 +142,17 @@ firstAndPike.calcCookiesEachHour();
 // alki.calcCookiesEachHour();
 // alki.render();
 
-//MAKE TABLE AND GIVE IT ROWS
-var table = document.createElement('table');
-table.id = 'fishTable';
-for (var i = 0; i < numberOfStores; i++){
-  var tr = document.createElement('tr');
-  tr.id = 'tr' + i;
-  table.appendChild(tr);
-}
-document.body.appendChild(table);
-
-//calcNumberHours();
-makeHeaderRow();
-// makeAllStoreRows();
-// makeTotalsRow();
+// //MAKE TABLE AND GIVE IT ROWS
+// var table = document.createElement('table');
+// table.id = 'fishTable';
+// for (var i = 0; i < numberOfStores; i++){
+//   var tr = document.createElement('tr');
+//   tr.id = 'tr' + i;
+//   table.appendChild(tr);
+// }
+// document.body.appendChild(table);
+//
+// //calcNumberHours();
+// makeHeaderRow();
+// // makeAllStoreRows();
+// // makeTotalsRow();
