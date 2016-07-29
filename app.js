@@ -1,245 +1,103 @@
 'use strict';
 
-var globalHours = ['6:00am', '7:00am', '8:00am','9:00am','10:00am','11:00am','12:00pm','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
+var hours = [' ', '6:00am' , '7:00am' , '8:00am' , '9:00am' , '10:00am' , '11:00am' ,'12:00pm' , '1:00pm' , '2:00pm' , '3:00pm' , '4:00pm' , '5:00pm' , '6:00pm' , '7:00pm' , '8:00pm', 'TOTAL'];
 
-// Store 1
-var firstAndPike = {
-  locationName: 'First and Pike',
-  minCustPerHour: 23,
-  maxCustPerHour: 65,
-  avgCookieNumber: 6.3,
-  custEachHourArray: [],
-  cookiesEachHourArray: [],
-  totalDailyCookieSales: 0
-};
+var storeLocations = [];
 
-// This method will generate a random number of customer for each hour and push
-//  them into the array.
-firstAndPike.calcCustEachHour = function (){
-  for (var i = 0; i < globalHours.length; i++) {
+function StoreLocation(storeName, minCustPerHour, maxCustPerHour, avgCookiesPerCust) {
+  this.storeName = storeName;
+  this.minCustPerHour = minCustPerHour;
+  this.maxCustPerHour = maxCustPerHour;
+  this.avgCookiesPerCust = avgCookiesPerCust;
+  this.custEachHourArray = [];
+  this.cookiesEachHourArray = [];
+  this.totalDailyCookiesSale = 0;
+  this.stringsForDisplayInLists = [];
+  this.calcCustEachHour();
+  this.calcCookiesEachHour();
+  storeLocations.push(this);
+}; // END OF CONSTRUCTOR
+
+// This method will generate a random of customers for each hour and push them into a array.
+StoreLocation.prototype.calcCustEachHour = function () {
+  for (var i = 0; i < hours.length; i++) {
     var singleHourCust = Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour;
-    //console.log(this.maxCustPerHour);
     this.custEachHourArray.push(singleHourCust);
   }
+  console.log(this.custEachHourArray);
 };
-firstAndPike.calcCustEachHour();
 
-//This method will use the array of customers for each hours, multipy each of those hoursly values by the average cookies per customer.
-//  and generate an array of hourly cookie sales
-firstAndPike.calcCookiesEachHour = function(){
-  for (var i = 0; i < globalHours.length; i++) {
-    var singleHourCookies = Math.ceil(this.custEachHourArray[i] * this.avgCookieNumber);
+// This method will use the array of customers for each hour, multiply each of the those hourly values by the
+// average cookies per customer, and generate an array of hourly cookie sales...
+StoreLocation.prototype.calcCookiesEachHour = function () {
+  for (var i = 0; i < hours.length; i++) {
+    var singleHourCookies = Math.ceil(this.custEachHourArray[i] * this.avgCookiesPerCust);
     this.cookiesEachHourArray.push(singleHourCookies);
-    this.totalDailyCookieSales += singleHourCookies;
-    var totalCookie = totalCookie + singleHourCookies;
-    console.log(totalCookie);
+    this.totalDailyCookiesSale += singleHourCookies;
   }
+  this.stringsForDisplayInLists.push('Total: ' + this.totalDailyCookiesSale + ' cookies');
 };
-//
-firstAndPike.calcCookiesEachHour();
 
-// This method will take the array of hourly cookie sales and display the data as an unordered list
-//   this.calcCookiesEachHour();
-firstAndPike.render = function(){
-  var pikeList = document.getElementById('firstAndPike');
-  for (var i = 0; i < globalHours.length; i++) {
-    var listElement = document.createElement('li');
-    listElement.textContent = globalHours[i] + ': ' + this.cookiesEachHourArray[i] + ' cookies';
-    pikeList.appendChild(listElement);
+// Stores that run through the CONSTRUCTOR
+var pike = new StoreLocation('First And Pike' , 23 , 65 , 6.3);
+var seatac = new StoreLocation('SeaTac Airport' , 3 , 24 , 1.2);
+var center = new StoreLocation('Seattle Center' , 11 , 38 , 3.7);
+var capitol = new StoreLocation('Capitol Hill' , 20 , 38 , 2.3);
+var alkibeach = new StoreLocation('Alki' , 2 , 16 , 4.6);
+
+
+
+// CREATE THE TABLE HEADER
+function makeHeaderRow() {
+  // GRAB THE TABLE ID FROM THE HTML
+  var table = document.getElementById('storeTable');
+  // CREATE THE TABLE ROW ELEMENT
+  var tableRow = document.createElement('tr');
+  // CREATE A TABLE HEADER FOR EVER ITEM IN HOURS ARRAY
+  for (var i = 0; i < hours.length; i++) {
+    // CREATE THE TABLE HEADER FOR DATES
+    var tableHeader = document.createElement('th');
+    // FILL IN THE TABLE HEADER CONTENT
+    tableHeader.textContent = hours[i];
+    // APPEND THE TABLE HEADER TO THE ROW
+    tableRow.appendChild(tableHeader);
   };
+  // APPEND THE TABLE ROW TO THE TABLE
+  table.appendChild(tableRow);
 };
-firstAndPike.render();
+makeHeaderRow();
 
-
-// Store 2
-
-var seaTacAir = {
-  locationName: 'SeaTac Airport',
-  minCustPerHour: 3,
-  maxCustPerHour: 24,
-  avgCookieNumber: 1.2,
-  custEachHourArray: [],
-  cookiesEachHourArray: [],
-  totalDailyCookieSales: 0
-};
-
-seaTacAir.calcCustEachHour = function (){
-  // This method will generate a random number of customer for each hour and push
-  //  them into the array.
-  for (var i = 0; i < globalHours.length; i++) {
-    var singleHourCust = Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour;
-    //console.log(this.maxCustPerHour);
-    this.custEachHourArray.push(singleHourCust);
+// FILL IN THE BODY OF THE TABLE WITH DATA
+function makeAllStoreRows() {
+  // GO THROUGH THE STORE LOCATIONS ARRAY AND FILL IN THE TABLE
+  for (var j = 0; j < storeLocations.length; j++) {
+    // GRAB THE TABLE ID FROM THE HTML
+    var table = document.getElementById('storeTable');
+    // CREATE A TABLE ROW ELEMENT
+    var tableRow = document.createElement('tr');
+    // CREATE A TABLE DATA HEADER (TD) FOR THE STORE NAME
+    var tableName = document.createElement('th');
+    // FILL IN THE TABLE DATA FOR THE TABLE NAME
+    tableName.textContent = storeLocations[j].storeName;
+    // APPEND THE TABLE DATA TO THE ROW
+    tableRow.appendChild(tableName);
+    // CREATES TABLE DATA FOR EACH ITEM IN 'cookiesEachHourArray' ARRAY
+    for (var i = 0; i < (hours.length - 2); i++) {
+      // CREATE A TABLE DATA ELEMENT
+      var tableData =  document.createElement('td');
+      // FILL IN THE COOKIES EACH HOUR INTO THE TABLE
+      tableData.textContent = storeLocations[j].cookiesEachHourArray[i];
+      // APPEND THE TABLE DATA TO THE TABLE ROW
+      tableRow.appendChild(tableData);
+    };
+    // CREATE A TABLE DATA ELEMENT
+    var tableTotal =  document.createElement('td');
+    // FILL IN THE TOTAL DAILY COOKIES TO THE TABLE`
+    tableTotal.textContent = storeLocations[j].totalDailyCookiesSale;
+    // APPEND THE TOTAL TABLE DATA TO THE TABLE ROW
+    tableRow.appendChild(tableTotal);
+    // FINALLY APPENDING THE WHOLE TABLE ROW TO THE TABLE
+    table.appendChild(tableRow);
   }
 };
-seaTacAir.calcCustEachHour();
-
-//This method will use the array of customers for each hours, multipy each of those hoursly values by the average cookies per customer.
-//  and generate an array of hourly cookie sales
-seaTacAir.calcCookiesEachHour = function(){
-  for (var i = 0; i < globalHours.length; i++) {
-    var singleHourCookies = Math.ceil(this.custEachHourArray[i] * this.avgCookieNumber);
-    this.cookiesEachHourArray.push(singleHourCookies);
-    this.totalDailyCookieSales += singleHourCookies;
-    var totalCookie = totalCookie + singleHourCookies;
-    console.log(totalCookie);
-  }
-};
-
-seaTacAir.calcCookiesEachHour();
-
-// This method will take the array of hourly cookie sales and display the data as an unordered list
-//   this.calcCookiesEachHour();
-seaTacAir.render = function(){
-  var airList = document.getElementById('seaTacAirport');
-  for (var i = 0; i < globalHours.length; i++) {
-    var airListElement = document.createElement('li');
-    airListElement.textContent = globalHours[i] + ': ' + this.cookiesEachHourArray[i] + ' cookies';
-    airList.appendChild(airListElement);
-  };
-};
-seaTacAir.render();
-
-// //Store 3
-//
-// var seaCenter = {
-//   locationName: 'Seattle Center',
-//   minCustPerHour: 3,
-//   maxCustPerHour: 24,
-//   avgCookieNumber: 1.2,
-//   custEachHourArray: [],
-//   cookiesEachHourArray: [],
-//   totalDailyCookieSales: 0
-// };
-//
-// // This method will generate a random number of customer for each hour and push
-// //  them into the array.
-// seaCenter.calcCustEachHour = function (){
-//   for (var i = 0; i < globalHours.length; i++) {
-//     var singleHourCust = Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour;
-//     //console.log(this.maxCustPerHour);
-//     this.custEachHourArray.push(singleHourCust);
-//   }
-// };
-// // Call function that caluculates the cust per hr
-// seaCenter.calcCustEachHour();
-//
-// seaCenter.calcCookiesEachHour = function(){
-//   //This method will use the array of customers for each hours, multipy each of those hoursly values by the average cookies per customer.
-// //  and generate an array of hourly cookie sales
-//   for (var i = 0; i < globalHours.length; i++) {
-//     var singleHourCookies = Math.ceil(this.custEachHourArray[i] * this.avgCookieNumber);
-//     this.cookiesEachHourArray.push(singleHourCookies);
-//     this.totalDailyCookieSales += singleHourCookies;
-//     var totalCookie = totalCookie + singleHourCookies;
-//     console.log(totalCookie);
-//   }
-// };
-// seaCenter.calcCookiesEachHour();
-//
-// seaCenter.render = function(){
-// // This method will take the array of hourly cookie sales and display the data as an unordered list
-// //   this.calcCookiesEachHour();
-// var pikeList = document.getElementById('Seattle Center');
-// for (var i = 0; i < hours.length; i++) {
-//   var listElement = document.createElement('li');
-//   totalElement.textContent = hours[i] + 'i' + this.cookiesEachHourArray[i] + 'cookies';
-//   airList.appendChild(totalElement);
-// };
-// seaCenter.render();
-//
-//
-// //Store 4
-//
-// var capitalHill = {
-//   locationName: 'Capital Hill',
-//   minCustPerHour: 3,
-//   maxCustPerHour: 24,
-//   avgCookieNumber: 1.2,
-//   custEachHourArray: [],
-//   cookiesEachHourArray: [],
-//   totalDailyCookieSales: 0
-// };
-//
-// capitalHill.calcCustEachHour = function (){
-//   // This method will generate a random number of customer for each hour and push
-//   //  them into the array.
-//   for (var i = 0; i < globalHours.length; i++) {
-//     var singleHourCust = Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour;
-//     //console.log(this.maxCustPerHour);
-//     this.custEachHourArray.push(singleHourCust);
-//   }
-// };
-// capitalHill.calcCustEachHour();
-//
-// capitalHill.calcCookiesEachHour = function(){
-//   //This method will use the array of customers for each hours, multipy each of those hoursly values by the average cookies per customer.
-// //  and generate an array of hourly cookie sales
-//   for (var i = 0; i < globalHours.length; i++) {
-//     var singleHourCookies = Math.ceil(this.custEachHourArray[i] * this.avgCookieNumber);
-//     this.cookiesEachHourArray.push(singleHourCookies);
-//     this.totalDailyCookieSales += singleHourCookies;
-//     var totalCookie = totalCookie + singleHourCookies;
-//     console.log(totalCookie);
-//   }
-// };
-//
-//
-// capitalHill.calcCookiesEachHour();
-//
-// capitalHill.render = function(){
-// // This method will take the array of hourly cookie sales and display the data as an unordered list
-// //   this.calcCookiesEachHour();
-// var pikeList = document.getElementById('capitalHill');
-// for (var i = 0; i < hours.length; i++) {
-//   var listElement = document.createElement('li');
-//   totalElement.textContent = hours[i] + 'i' + this.cookiesEachHourArray[i] + 'cookies';
-//   airList.appendChild(totalElement);
-// };
-// capitalHill.render();
-//
-// //Store 5
-// var alki = {
-//   locationName: 'Alki',
-//   minCustPerHour: 3,
-//   maxCustPerHour: 24,
-//   avgCookieNumber: 1.2,
-//   custEachHourArray: [],
-//   cookiesEachHourArray: [],
-//   totalDailyCookieSales: 0
-// };
-//
-// // This method will generate a random number of customer for each hour and push
-// //  them into the array.
-// alki.calcCustEachHour = function (){
-//   for (var i = 0; i < globalHours.length; i++) {
-//     var singleHourCust = Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour;
-//     //console.log(this.maxCustPerHour);
-//     this.custEachHourArray.push(singleHourCust);
-//   }
-// };
-// alki.calcCustEachHour();
-//
-// //This method will use the array of customers for each hours, multipy each of those hoursly values by the average cookies per customer.
-// //  and generate an array of hourly cookie sales
-// alki.calcCookiesEachHour = function(){
-//   for (var i = 0; i < globalHours.length; i++) {
-//     var singleHourCookies = Math.ceil(this.custEachHourArray[i] * this.avgCookieNumber);
-//     this.cookiesEachHourArray.push(singleHourCookies);
-//     this.totalDailyCookieSales += singleHourCookies;
-//     var totalCookie = totalCookie + singleHourCookies;
-//     console.log(totalCookie);
-//   }
-// };
-// alki.calcCookiesEachHour();
-//
-// // This method will take the array of hourly cookie sales and display the data as an unordered list
-// //   this.calcCookiesEachHour();
-// alki.render = function(){
-// var pikeList = document.getElementById('alki');
-// for (var i = 0; i < hours.length; i++) {
-//   var listElement = document.createElement('li');
-//   totalElement.textContent = hours[i] + 'i' + this.cookiesEachHourArray[i] + 'cookies';
-//   airList.appendChild(totalElement);
-// };
-// alki.render();
+makeAllStoreRows();
