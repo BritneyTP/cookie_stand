@@ -1,8 +1,9 @@
 'use strict';
 
-var hours = [' ', '6:00am' , '7:00am' , '8:00am' , '9:00am' , '10:00am' , '11:00am' ,'12:00pm' , '1:00pm' , '2:00pm' , '3:00pm' , '4:00pm' , '5:00pm' , '6:00pm' , '7:00pm' , '8:00pm', 'TOTAL'];
+var globalHours = [' ', '6:00am' , '7:00am' , '8:00am' , '9:00am' , '10:00am' , '11:00am' ,'12:00pm' , '1:00pm' , '2:00pm' , '3:00pm' , '4:00pm' , '5:00pm' , '6:00pm' , '7:00pm' , '8:00pm', 'TOTAL'];
 
 var storeLocations = [];
+var allStoreLocationHours = [];
 
 function StoreLocation(storeName, minCustPerHour, maxCustPerHour, avgCookiesPerCust) {
   this.storeName = storeName;
@@ -20,7 +21,7 @@ function StoreLocation(storeName, minCustPerHour, maxCustPerHour, avgCookiesPerC
 
 // This method will generate a random of customers for each hour and push them into a array.
 StoreLocation.prototype.calcCustEachHour = function () {
-  for (var i = 0; i < hours.length; i++) {
+  for (var i = 0; i < globalHours.length; i++) {
     var singleHourCust = Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour;
     this.custEachHourArray.push(singleHourCust);
   }
@@ -30,7 +31,7 @@ StoreLocation.prototype.calcCustEachHour = function () {
 // This method will use the array of customers for each hour, multiply each of the those hourly values by the
 // average cookies per customer, and generate an array of hourly cookie sales...
 StoreLocation.prototype.calcCookiesEachHour = function () {
-  for (var i = 0; i < hours.length; i++) {
+  for (var i = 0; i < globalHours.length; i++) {
     var singleHourCookies = Math.ceil(this.custEachHourArray[i] * this.avgCookiesPerCust);
     this.cookiesEachHourArray.push(singleHourCookies);
     this.totalDailyCookiesSale += singleHourCookies;
@@ -45,8 +46,6 @@ var center = new StoreLocation('Seattle Center' , 11 , 38 , 3.7);
 var capitol = new StoreLocation('Capitol Hill' , 20 , 38 , 2.3);
 var alkibeach = new StoreLocation('Alki' , 2 , 16 , 4.6);
 
-
-
 // CREATE THE TABLE HEADER
 function makeHeaderRow() {
   // GRAB THE TABLE ID FROM THE HTML
@@ -54,11 +53,11 @@ function makeHeaderRow() {
   // CREATE THE TABLE ROW ELEMENT
   var tableRow = document.createElement('tr');
   // CREATE A TABLE HEADER FOR EVER ITEM IN HOURS ARRAY
-  for (var i = 0; i < hours.length; i++) {
+  for (var i = 0; i < globalHours.length; i++) {
     // CREATE THE TABLE HEADER FOR DATES
     var tableHeader = document.createElement('th');
     // FILL IN THE TABLE HEADER CONTENT
-    tableHeader.textContent = hours[i];
+    tableHeader.textContent = globalHours[i];
     // APPEND THE TABLE HEADER TO THE ROW
     tableRow.appendChild(tableHeader);
   };
@@ -82,7 +81,7 @@ function makeAllStoreRows() {
     // APPEND THE TABLE DATA TO THE ROW
     tableRow.appendChild(tableName);
     // CREATES TABLE DATA FOR EACH ITEM IN 'cookiesEachHourArray' ARRAY
-    for (var i = 0; i < (hours.length - 2); i++) {
+    for (var i = 0; i < (globalHours.length - 2); i++) {
       // CREATE A TABLE DATA ELEMENT
       var tableData =  document.createElement('td');
       // FILL IN THE COOKIES EACH HOUR INTO THE TABLE
@@ -101,3 +100,42 @@ function makeAllStoreRows() {
   }
 };
 makeAllStoreRows();
+
+function makeTotalsRow() { var table = document.getElementById('storeTable');
+  //create a Table Row for Totals
+  var tableRow = document.createElement('tr');
+  //create a Table Data for Totals
+  // var tableHeader = document.createElement('th');
+  // for (var i = 0; i < globalHours.length - 2; i++);
+  var tableTotal = document.createElement('td');
+  tableTotal.textContent = allStoreLocationHours[i].totalDailyCookiesSale;
+    // table.appendChild(tableHeader);
+  tableRow.appendChild(tableTotal);
+  table.appendChild(tableRow);
+}
+
+makeTotalsRows();
+
+function makeTotalsRow() {
+  var footerRow = document.createElement('tfoot');
+  storeTable.appendChild(footerRow);
+  var tableRow = document.createElement('tr');
+  tableRow.textContent = 'Totals';
+  footerRow.appendChild(tableRow);
+  var globalDailyTotal = 0;
+  for (var i = 0; i < hours.length; i++) {
+    var totalForEachHour = 0;
+    for (var store = 0; store < myStores.length; store++) {
+      totalForEachHour = totalForEachHour + myStores[store].cookiesSoldEachHour[i];
+      globalDailyTotal += myStores[store].cookiesSoldEachHour[i];
+    }
+    var tdElement = document.createElement('td');
+    tdElement.textContent = totalForEachHour;
+    tableRow.appendChild(tdElement);
+  }
+  tdElement = document.createElement('td');
+  tdElement.textContent = globalDailyTotal;
+  tableRow.appendChild(tdElement);
+}
+
+makeTotalsRow();
