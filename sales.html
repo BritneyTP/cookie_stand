@@ -1,14 +1,39 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Sales pages</title>
-  </head>
 
-  <body>
-    <header>
-      <h1>Daily Sales Projections</h1>
-    </header>
-    <!-- <table id "salmonTable"></table> -->
-    <script src=app.js> </script>
+  <head>
+    <meta charset="utf-8">
+    <title>Cookie Stand</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <a href = "https://github.com/codefellows/seattle-201d11s/blob/master/class-06-dom-objects-domain_modeling/lab/assets/salmon.png?raw=true"> -->
+    <h1>Salmon Cookies</h1>
+  </head>
   </body>
+    <table id="storeTable"></table>
+    <section>
+   <form id="add-location-form">
+           <fieldset>
+            <!-- Add Form Legend -->
+            <legend>Add a New Location</legend>
+            <!-- Shop Name Input -->
+            <label for="location">Shop Name:</label>
+            <input name="location" type="text" required/>
+            <!-- Minimum Customers Per Hour Input -->
+            <label for="min">Minimum Customers Per Hour:</label>
+            <input name="min" type="number" required/>
+            <!-- Maximum Customers Per Hour Input -->
+            <label for="max">Maximum Customers Per Hour:</label>
+            <input name="max" type="number" required/>
+            <!-- Average Cookies Per Hour Input -->
+            <label for="cookies">Average Cookies Per Customer:</label>
+            <input name="cookies" type="number" step="any" required/>
+          </fieldset>
+          <input id="submit" type="submit"/>
+          <input id="reset" type="reset"/>
+         </form>
+   </section>
+
+    <script src="app.js"></script>
+  </body>
+
 </html>
