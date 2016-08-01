@@ -1,60 +1,97 @@
-<<!DOCTYPE>
+<!DOCTYPE>
 <html>
   <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" type="text/css">
     <title>Sales pages</title>
   </head>
 
   <body>
 
-    <header>
-      <p>Login or register.</p>
-      <p>Contact us: 555-855-7555</p>
+</div>
+   <header>
+     <p>Login or Register<br>Contact Us: 955-555-5559</p>
+<br></br><br></br><br></br>
+     <div class="fishyfish">
+       <img src="https://github.com/codefellows/seattle-201d11/blob/master/class-09-advanced_css_layout/lab/assets/chinook.jpg?raw=true"alt="salmonCookies" class="align-left medium" style="width:15em; height:7em;">
+    </div>
+    <nav>
+       <a href="about.html">About</a>
+       <a href="locations.html">Locations</a>
+       <a href="contact.html">Contact Us</a>
+       <a href="store.html">Store</a>
+     </nav>
+     <br></br>
+     <div class="title"> PAT'S SALMON COOKIES </div>
 
-    <div id="Social Media">
+
+    <!-- <div class="socialMedia">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAY1BMVEX///8ArO0Ap+YApeMAquoAq+yW1e1wcHAAmtQAm9YAntkAod0Rsu7i9v34/f+M2vei4fhqz/RFwvKD1/Z50/br+P4pufBPxvNfy/S76fo1vfHZ8/yw5fmb3vgctO7y+/7L7vuuSKCBAAAAz0lEQVQ4jdXR2RaCIBCAYSehBTAxXEnN93/KgNxAwOv+S+Y76BmS5LRrNAXu0RR4RDOABDOAEBqMEAUoTYNRqkF6CZZqoObISnRcIiQZQkoYgBDGRYl/jR+9nHwSGCsxAwwwJC2Ypnl/vAa8B7k6YmpeLwvOwQaNPhyaFXBwAPTm/JltF9hAPO0nLF3QOG/8OnxCWPMMDoBx9wsOgGw3r8AD6moDjQ8AtMu8gANgcpTiPc/npds3lOseegY+AKwd+q7nxTr2/IPbP4FbtOS0L3SfEBOpCRZjAAAAAElFTkSuQmCC">
       <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Ny83Nzc3Nzc3NzctNTA3Nzg3NzctMTc1NzcwNTU3MjU1NS01NTI3OC03NS0rLf/AABEIACAAIAMBEQACEQEDEQH/xAAZAAACAwEAAAAAAAAAAAAAAAAFBgMEBwL/xAAzEAABAgQDBQIPAAAAAAAAAAABAgMABAUREhNBBiEiMVEUQgcjJDIzUmFkcYGDobGy0f/EABgBAQEAAwAAAAAAAAAAAAAAAAMFAQIE/8QAJREAAgIBAQcFAAAAAAAAAAAAAQIAAxESEyEiMTNRYQQ0cZHB/9oADAMBAAIRAxEAPwDiu1ueqFVXxoFkpKlFtKiSQCQCQbJF7ADp1i5TQioDiSzezWEdpEylx30mBX0k/wAhQi9pk2GN9F2D7fKomprIZS4nEgZIUSNDpHLb6xK20gZiJQzjJOIEmlnZ2ovu08pbelHFDE2nAHAkncoDmDblDlVurGRzEJS1b7jA0u1mzCnPWSn9RDAcAnMnUc+Yx0GlioVBmULmXmX4sN7WBPL5Qd1myQviOi62CzSZqmKeoYpjcyW1BpDecEX822l9bddYiraBbtCJSNea9GZi20fkUxOSePHlLcaxWtexIvaLiNrQN4kx+B9PmXaY0BKMrVq2k/YRuOUPGCZK+9YRibAR62iXbwapX7rL/lESKvdH5P7KL9D6mLVB4rIHsMVxyMmv1FjbOIXR1CQn/EvMjBx7gsDdiTfmDB12q65EV6yrYMEzVQa34XUH4KEbzAEsVPb2oTdCFEUxK9mDbbeNKVY7III34rd0aQC+lrFm0zvjG5iunEB0emztfqLUpJMqUpZsSBcIB7yugELZYlSEkwVraywHE//Z">
       <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3NTU3Nzc3Nzc3Nzc3NSs4Nys1Nzc3Nzc3Ny03KzcuLTc3Ny03LDc4Kzc3N//AABEIACAAIAMBIgACEQEDEQH/xAAaAAACAgMAAAAAAAAAAAAAAAAGBwAFAgME/8QALhAAAgEDAgMGBQUAAAAAAAAAAQIDBAURACEGEiIxMkFhscETIyVxcxQVJFGB/8QAFwEAAwEAAAAAAAAAAAAAAAAAAAIDAf/EAB8RAAIBAwUBAAAAAAAAAAAAAAECABESwSEiMWHwA//aAAwDAQACEQMRAD8A5xXVnFHFLSXGZ2jfn+FET0RqASAB/mhaejxNJjOOY+ujs2CtooqWutCvPK6kvgJlMjwDHGME+fZobul5kt1e9DblMc8UhimeMBXkkA6sMO6AcjA2Pb9ooGZj3TNcS7sopT2sopaZkid1BJVSQP71nwNxLc7VeI56SduVeqWJchWXIyrDx9tWthuc9xukNtvTyTLPKIlncZlhc93q7WBO2D99tGdXwXS01LNMlTJlELY5BvjTNt5ighoS2w/Tqf8AGNLTi/hWvW+zV1BFLNFPIZj8BeZ43Peyo3IJycj20xQxtZ/RV/yni2Vm2WRfAg6j1tDIMPPAw82B1FXKGaVugDwnw3XPdYKuuhlhSKQTZnXlaRl3XCnfGcHPZpiXQ/Tqn8bemtKVtDGMJPAo8mA1Gf8Ac/4VB86SXpZl3VF8STob6FzBVtn/2Q==">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAA2FBMVEX////XZlTYZ1bTRzTMMC3MLSzLKivop56XBQbYaljWY1HUTVDVWEjMMy/ST0HPRDfOOzPQRjnTUkLWX07PPzSsT0H11tL69POyHhTST0KdDw+8ZGT05uXfgnjOMjW3MjPqpqjWoaG3JRihJCXqs67NRUPyzMuiDwvRQkPUeXLEP0DKOyracF/MTkLbdmbCMSHmmIvffm/q08/bsqu2ZFjlvbzQm5S0Wk3KT0nBWEi3VlGxSUPHfXm9JCXUaWvWX1/ijIrFVETNjYXHbGC1STzekYfAPDHbbmcpK+h+AAABwklEQVQ4jX2Sa1viQAyFI1XLSp1uLxaKlGstRaRcFLQuLrJi+f//aHPSCnYf3ffLJCdnMplpiSg0tG8wQmJGWjKb6V8wmyXaiPdr8yC5+/EFd0kw10KaOEnlWxJnQuPKyX+ojGl8cSRNr4T0KI1peiw/3C8wNbVWjwfLlKZOzvZhSQfqvbSQD4btui6bPc8TS5QeDQbjrKF6AeKKDu9yKzobsBopNN0oSJD9kXBKfVmXeX23202Q6phDWvTZYNv2Fv1tO11Q641T28GBAQcwQHjnfG5PcMsIuY1JdQQwKKW4ZUupdxlUqVwgnVc2NIrcy9VPhhBBgxp+2RCWOvhsUJZl4YjMCmQ0C8iteFWFAaU3C7PXpZ61ONwXBt80TZ9fZmHucYIJntELAY7wXQYt3BF+QGQZTggRsWEoBncT6W6P5VXmmpl8mL0Yhmz4+QHeqb7+9bxCXRcJhpuP+hN9wrNEu4HhsgAjhEW9a+VayYDJ4k0YRcvXg5YbToVLvqp3WiY3tM+EGjqflWmzYdCJz4UNG2rnZeLOgHrN27iN5Dd/j3K5Hd82+W2um50a6PIJtTKd5jWu1BtUwfDlpfoPA97/F63GP/gAqI0vAAAAAElFTkSuQmCC">
-   </div>
-    <div id="family portrait"
-     <img src="https://github.com/codefellows/seattle-201d11/blob/master/class-09-advanced_css_layout/lab/assets/chinook.jpg?raw=true";
+   </div> -->
 
 
-          <ul>
-            <li>Shop Online</li>
-            <li>Gallery</li>
-            <li>About Us</li>
-            <li>Locations</li>
-          </ul>
 
-    </header>
-<h1>Gift a Class</h1>
-<div id="Family Photos">
-  <img src="https://github.com/codefellows/seattle-201d11/blob/master/class-09-advanced_css_layout/lab/assets/family.jpg?raw=true">
+</header>
+
+<br></br>
+<br></br>
+<br></br>
+
+<br></br>
+<br></br>
+<br></br>
+<div id="body">
+  <div class="article column1">
+ <h1>Gift a Class</h1>
+<p><img src="https://github.com/codefellows/seattle-201d11/blob/master/class-09-advanced_css_layout/lab/assets/family.jpg?raw=true" alt="familyPortrait" class="align-left medium" style="width:12em; height:10em;"/>
+  <br>Learn more about our family classes<br> where you will get tips and tricks<br> on how to make Salmon Cookies <br>together. <br>  <button id="orderNow">
+      Order Now
+    </button> </br></br></br></br></br></p>
+  </div>
+
+
+
+
+<div class="article column2">
+<h2> Salmon Party Cookies</h2>
+<p><img src="https://github.com/codefellows/seattle-201d11/blob/master/class-09-advanced_css_layout/lab/assets/fish.jpg?raw=true" alt="salmonCookies" class="align-left medium" style="width:7em; height:7em;">
+  <img src="https://github.com/codefellows/seattle-201d11/blob/master/class-09-advanced_css_layout/lab/assets/frosted-cookie.jpg?raw=true" alt="salmonCookies" class="align-left medium" style="width:7em; height:7em;"/>
+  <br>Book for your next Salmon Party <br>now. For every 50 cookies you buy, <br>you get an additional 15 dory cookies. <br><button id="orderNow">
+     Order Now
+   </button></br></br></br></br>
+   <br> </p>
 </div>
-<div id="Gift a Class">
-  <p>
-    At our classes you will learn tips and tricks of making Salmon cookies, Dory Cakes, and all your other favorite under the sea charcters.
-  </p>
+
+
+<div class="article column3">
+<h3> SHOP NOW </h3>
+<p><img src="https://github.com/codefellows/seattle-201d11/blob/master/class-09-advanced_css_layout/lab/assets/shirt.jpg?raw=true"alt="salmonCookies" class="align-left medium" style="width:7em; height:7em;">
+  <img src="https://github.com/codefellows/seattle-201d11/blob/master/class-09-advanced_css_layout/lab/assets/cutter.jpeg?raw=true"alt="salmonCookies" class="align-left medium" style="width:7em; height:7em;"/> <br> New merchandise in stores now.</br>
+  <br><button id="orderNow">
+     Order Now
+   </button></br> </p>
 </div>
-
-
-
-
-
-
     <!-- <table id "salmonTable"></table>
     <ul id="firstAndPike"> First and Pike</ul>
     <ul id="seaTacAirport"> SeaTac Airport</ul>
     <ul id="seattleCenter"> Seattle Center</ul>
     <ul id="capitalHill"> Capital Hill</ul>
     <ul id="alki"> Alki</ul> -->
+    <div id="bigFish2">
+      <img src="https://github.com/codefellows/seattle-201d11/blob/master/class-09-advanced_css_layout/lab/assets/salmon.png?raw=true">
+    </div>
+
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     <footer>
-
     <ul class="footer" id="footerRow1">
-      <li>SHOP ONLINE</li>
+      <li>ORDER</li>
       <li>Grab & go in-store pickup </li>
       <li>Order cookies online</li>
       <li>Salmon merchandise</li>
@@ -80,25 +117,12 @@
       <li>Store Policy</li>
    </ul>
 
-
-
-
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
         <br></br>
         <br></br>
 
-          <img src='img/lab-assets/small-logo.png' id='logo'/>
-          <p>Delicious	&copy; 2010 &bull; All Rights Reserved.<br>Published Under The Sea.</br></p>
+          <p>Krusty Krab	&copy; 2010 &bull; All Rights Reserved.<br>Published Under The Sea.</br></p>
 
         </footer>
-
-
 
 
     <script src=app.js> </script>

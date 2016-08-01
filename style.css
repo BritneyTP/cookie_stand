@@ -1,3 +1,171 @@
+
 body {
-  
+background-color: #99ffdd ;
+/*background-image: url('https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQZLwqoxGdPmHvUit0UDoZmH0cp0N5Nulc4evx3575aIEy8pLPMrA');*/
 }
+header {
+  background-color: grey;
+  width: 100%;
+  height: 75px;
+  position: relative;
+  border-bottom: #ccc solid 15px;
+  margin-top: 100px;
+  position: relative;
+
+
+}
+nav {
+  display: inline;
+  position: absolute;
+  right: 3%;
+  top: 40%;
+}
+/*.socialMedia {
+float: right;
+position: absolute;
+right: 0;
+bottom: 30px;
+
+}*/
+.column1, .column2, .column3 {
+  width: 31.3%;
+  float: left;
+  margin:1%;
+  text-decoration: none;
+  font-size: 20px;
+}
+.fishyfish {
+  float:right;
+
+}
+/*h2 {
+  text-decoration: underline;
+  float: center;
+  font-size: 20px;
+}
+h3 {
+  text-decoration: underline;
+  font-size: 20px;
+}*/
+.footer {
+  float: right;
+  position: static;
+}
+.title {
+  center: 20px;
+  font-size: 75px;
+  font-style: arial;
+}
+#socialMedia {
+  position: ;
+  float: right;
+  top: right;
+  display: inline-block;
+  border-style: none;
+  margin-top: 10px;
+  padding: 0px;
+  font-size: 15px;
+
+
+}
+
+#familyPortrait {
+  position: inherit;
+  float: right;
+  width: 100px;
+  height: 100px;
+}
+#body {
+  float: center;
+  border: 20px;
+}
+img.align-right {
+  float: right;
+  margin-left: 10px;
+}
+
+img src {
+  width: 100px;
+  height: 100px;
+
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+   width: 100%;
+   height: 100%;
+   background-color: white;
+   width: 1000px;
+   height: 100%;
+   margin: auto;
+
+}
+
+#bigFish1 {
+  float:right;
+  background-repeat: no-repeat;
+  background-position: right;
+
+}
+#bigFish2 {
+  float:right;
+}
+img {
+    float: center;
+    display: inline-block;
+    padding: 10px;
+}
+
+p {
+  font-size: 12;
+  color: blue;
+  padding-left: 200px;
+  padding-right: 200px;
+}
+footer {
+  display: inline;
+  position: absolute;
+  right: 3%;
+  bottom: 40%;
+}
+
+
+lefthr {
+  width: 100%;
+  float: left;
+  color: #999999;
+  margin: auto 0;
+  padding: 0;
+  z-index: 1;
+}
+
+#footer p {
+  text-align: center;
+  position: relative;
+  top: 40px;
+  color: #555;
+  font-size: 12px;
+  font-family: "Slabo", serif;
+
+}
+.end {
+  margin-bottom: 50px;
+}
+#footer {
+  clear: both;
+  position: relative;
+}
+
+#footer img{
+  padding: 0;
+  z-index: 10;
+  position: absolute;
+  right: 49%;
+  bottom: 28px;
+}
+
+/*background-image: url('https://github.com/codefellows/seattle-201d11/blob/master/class-10-js_debugging-more_css_layout/lab/lab-assets/list-bg.png?raw=true');
+ background-repeat: no-repeat;
+ background-position: center;
+ text-align: center;*/
